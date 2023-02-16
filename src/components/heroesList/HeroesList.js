@@ -2,6 +2,7 @@ import {useHttp} from '../../hooks/http.hook';
 import { useEffect, useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { CSSTransition, TransitionGroup} from 'react-transition-group';
+import { createSelector } from 'reselect';
 
 import { heroesFetching, heroesFetched, heroesFetchingError, heroDeleted } from '../../actions';
 import HeroesListItem from "../heroesListItem/HeroesListItem";
@@ -9,17 +10,23 @@ import Spinner from '../spinner/Spinner';
 
 import './heroesList.scss';
 
-
-
 const HeroesList = () => {
-    const filteredHeroes = useSelector(state => {
-        if (state.activeFilter === 'all') {
-            return state.heroes
-        } else {
-            return state.heroes.filter(item => item.element === state.activeFilter)
+
+    const filteredHeroesSelector = createSelector(
+        (state) => state.filters.activeFilter,
+        (state) => state.heroes.heroes,
+        (filter, heroes) => {
+            if (filter === 'all') {
+                console.log('render');
+                return heroes;
+            } else {
+                return heroes.filter(item => item.element === filter);
+            }
         }
-    })
-    const { heroesLoadingStatus} = useSelector(state => state.heroesLoadingStatus);
+    );
+
+    const filteredHeroes = useSelector(filteredHeroesSelector);
+    const heroesLoadingStatus = useSelector(state => state.heroes.heroes.heroesLoadingStatus);
     const dispatch = useDispatch();
     const {request} = useHttp();
 
@@ -33,7 +40,6 @@ const HeroesList = () => {
     }, []);
 
     const onDelete = useCallback((id) => {
-     
         request(`http://localhost:3001/heroes/${id}`, "DELETE")
             .then(data => console.log(data, 'Deleted'))
             .then(dispatch(heroDeleted(id)))
@@ -44,7 +50,7 @@ const HeroesList = () => {
     if (heroesLoadingStatus === "loading") {
         return <Spinner/>;
     } else if (heroesLoadingStatus === "error") {
-        return <h5 className="text-center mt-5">Ошибка загрузки</h5>
+        return <h5 className="text-center mt-5">Помилка загрузки</h5>
     }
 
     const renderHeroesList = (arr) => {
@@ -53,7 +59,7 @@ const HeroesList = () => {
                 <CSSTransition
                     timeout={0}
                     classNames="hero">
-                    <h5 className="text-center mt-5">Героев пока нет</h5>
+                    <h5 className="text-center mt-5">Героїв поки нема</h5>
                 </CSSTransition>
             )
         }

@@ -2,21 +2,21 @@
   "heroes": [
     {
       "id": 1,
-      "name": "Первый герой",
-      "description": "Первый герой в рейтинге!",
+      "name": "Людина-вогонь",
+      "description": "Випускає вогонь",
       "element": "fire"
     },
     {
       "id": 2,
-      "name": "Неизвестный герой",
-      "description": "Скрывающийся в тени",
+      "name": "Вітряний чоловік",
+      "description": "Створює вітер",
       "element": "wind"
     },
     {
-      "id": "ca2f471b-384a-4879-b386-c53ead963120",
-      "name": "Лэндмэн",
-      "description": "Строить огромые дома",
-      "element": "earth"
+      "id": "64af79a3-b9b3-43c1-99e8-1f7beb54fd8e",
+      "name": "Аквамен",
+      "description": "Живе під водою",
+      "element": "water"
     }
   ],
   "filters": [
