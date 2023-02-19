@@ -1,6 +1,5 @@
-import { createAction } from "@reduxjs/toolkit";
 
-
+import { heroesFetching, heroesFetched, heroesFetchingError } from "../components/heroesList/heroesSlice";
 export const fetchHeroes = (request) => (dispatch) => {
     dispatch(heroesFetching());
         request("http://localhost:3001/heroes")
@@ -22,7 +21,6 @@ export const fetchFilters = (request) => (dispatch) => {
     }
 } */
 
-export const heroesFetching = createAction('HEROES_FETCHING')
 
 
 /* export const heroesFetched = (heroes) => {
@@ -32,7 +30,7 @@ export const heroesFetching = createAction('HEROES_FETCHING')
     }
 } */
 
-export const heroesFetched = createAction('HEROES_FETCHED')
+
 
 
 /* export const heroesFetchingError = () => {
@@ -41,7 +39,7 @@ export const heroesFetched = createAction('HEROES_FETCHED')
     }
 } */
 
-export const heroesFetchingError = createAction('HEROES_FETCHING_ERROR')
+
 export const filtersFetching = () => {
     return {
         type: 'FILTERS_FETCHING'
@@ -83,7 +81,7 @@ export const activeFilterChanged = (filter) =>  {
         payload: hero
     }
 } */
-export const heroCreated = createAction('HERO_CREATED')
+
 
 /* export const heroDeleted = (id) => {
     return {
@@ -92,4 +90,3 @@ export const heroCreated = createAction('HERO_CREATED')
     }
 } */
 
-export const heroDeleted = createAction('HERO_DELETED')

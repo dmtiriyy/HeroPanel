@@ -1,4 +1,4 @@
-import { createReducer } from "@reduxjs/toolkit"
+/* import { createReducer } from "@reduxjs/toolkit"
 import {
     heroesFetching,
     heroesFetched,
@@ -30,7 +30,7 @@ const heroes = createReducer(initialState, {
 },
     [],
     state => state
-)
+) */
 /* const heroes = createReducer(initialState, builder => {
     builder
         .addCase(heroesFetching, state => {
@@ -88,4 +88,4 @@ const heroes = (state = initialState, action) => {
     }
 } */
 
-export default heroes;
+/* export default heroes; */
