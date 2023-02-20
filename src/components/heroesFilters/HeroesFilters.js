@@ -3,9 +3,9 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import classNames from 'classnames';
 
-import { fetchFilters, activeFilterChanged } from '../../actions';
+import { fetchFilters } from '../../actions';
+import { filtersChanged } from './filtersSlice';
 import Spinner from '../spinner/Spinner';
-
 
 const HeroesFilters = () => {
 
@@ -13,9 +13,8 @@ const HeroesFilters = () => {
     const dispatch = useDispatch();
     const {request} = useHttp();
 
-   
     useEffect(() => {
-        dispatch(fetchFilters(request))
+        dispatch(fetchFilters(request));
 
         // eslint-disable-next-line
     }, []);
@@ -23,18 +22,16 @@ const HeroesFilters = () => {
     if (filtersLoadingStatus === "loading") {
         return <Spinner/>;
     } else if (filtersLoadingStatus === "error") {
-        return <h5 className="text-center mt-5">Помилка загрузки</h5>
+        return <h5 className="text-center mt-5">Ошибка загрузки</h5>
     }
 
     const renderFilters = (arr) => {
         if (arr.length === 0) {
-            return <h5 className="text-center mt-5">Фільтри не знайдені</h5>
+            return <h5 className="text-center mt-5">Фильтры не найдены</h5>
         }
 
-        
         return arr.map(({name, className, label}) => {
 
-            
             const btnClass = classNames('btn', className, {
                 'active': name === activeFilter
             });
@@ -43,7 +40,7 @@ const HeroesFilters = () => {
                         key={name} 
                         id={name} 
                         className={btnClass}
-                        onClick={() => dispatch(activeFilterChanged(name))}
+                        onClick={() => dispatch(filtersChanged(name))}
                         >{label}</button>
         })
     }
@@ -53,7 +50,7 @@ const HeroesFilters = () => {
     return (
         <div className="card shadow-lg mt-4">
             <div className="card-body">
-                <p className="card-text">Відфліртуйте героїв по елементам</p>
+                <p className="card-text">Отфильтруйте героев по элементам</p>
                 <div className="btn-group">
                     {elements}
                 </div>

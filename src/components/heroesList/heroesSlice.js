@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
     heroes: [],
-    heroesLoadingStatus: 'idle'
+    heroesLoadingStatus: 'idle',
 }
 
 const heroesSlice = createSlice({
