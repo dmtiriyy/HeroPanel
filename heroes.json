@@ -17,12 +17,6 @@
       "name": "Аквамен",
       "description": "Живе під водою",
       "element": "water"
-    },
-    {
-      "id": "0b86c48b-93e7-490b-b451-af2e2c261950",
-      "name": "vc",
-      "description": "cvbbc",
-      "element": "water"
     }
   ],
   "filters": [
