@@ -13,34 +13,39 @@
       "element": "wind"
     },
     {
-      "id": "64af79a3-b9b3-43c1-99e8-1f7beb54fd8e",
+      "id": "3d1b96a9-f17b-4a22-bffa-202f6de6234b",
       "name": "Аквамен",
-      "description": "Живе під водою",
+      "description": "Живе у воді",
       "element": "water"
     }
   ],
   "filters": [
     {
+      "id": "all",
       "name": "all",
       "label": "Всі",
       "className": "btn-outline-dark"
     },
     {
+      "id": "fire",
       "name": "fire",
       "label": "Вогонь",
       "className": "btn-danger"
     },
     {
+      "id": "water",
       "name": "water",
       "label": "Вода",
       "className": "btn-primary"
     },
     {
+      "id": "wind",
       "name": "wind",
       "label": "Вітер",
       "className": "btn-success"
     },
     {
+      "id": "earth",
       "name": "earth",
       "label": "Земля",
       "className": "btn-secondary"
