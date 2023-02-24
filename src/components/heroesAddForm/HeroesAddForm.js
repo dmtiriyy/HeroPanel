@@ -53,6 +53,16 @@ const HeroesAddForm = () => {
         }
     }
 
+    onSubmit = (e) => {
+        e.preventDefault();
+        if (this.state.name.length < 3 || !this.state.salary) return;
+        this.props.onAdd(this.state.name, this.state.salary);
+        this.setState({
+            name: '',
+            salary: ''
+        })
+    }
+
     return (
         <form className="border p-4 shadow-lg rounded" onSubmit={onSubmitHandler}>
             <div className="mb-3">
