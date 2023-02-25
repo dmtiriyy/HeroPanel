@@ -14,7 +14,7 @@ const HeroesAddForm = () => {
     const [heroDescr, setHeroDescr] = useState('');
     const [heroElement, setHeroElement] = useState('');
 
-    const [createHero, ] = useCreateHeroMutation();
+    const [createHero ] = useCreateHeroMutation();
 
     const {filtersLoadingStatus} = useSelector(state => state.filters);
     const filters = selectAll(store.getState());
@@ -53,7 +53,7 @@ const HeroesAddForm = () => {
         }
     }
 
-    onSubmit = (e) => {
+  const  onSubmit = (e) => {
         e.preventDefault();
         if (this.state.name.length < 3 || !this.state.salary) return;
         this.props.onAdd(this.state.name, this.state.salary);
@@ -62,11 +62,15 @@ const HeroesAddForm = () => {
             salary: ''
         })
     }
-
+   const onUpdateSearch = (e) =>{
+        const term = e.target.value;
+        this.setState({term});
+        this.props.onUpdateSearch(term);
+    }
     return (
         <form className="border p-4 shadow-lg rounded" onSubmit={onSubmitHandler}>
             <div className="mb-3">
-                <label htmlFor="name" className="form-label fs-4">Имя нового героя</label>
+                <label htmlFor="name" className="form-label fs-4">Ім'я нового героя</label>
                 <input 
                     required
                     type="text" 
@@ -79,7 +83,7 @@ const HeroesAddForm = () => {
             </div>
 
             <div className="mb-3">
-                <label htmlFor="text" className="form-label fs-4">Описание</label>
+                <label htmlFor="text" className="form-label fs-4">Опис</label>
                 <textarea
                     required
                     name="text" 
@@ -92,7 +96,7 @@ const HeroesAddForm = () => {
             </div>
 
             <div className="mb-3">
-                <label htmlFor="element" className="form-label">Выбрать элемент героя</label>
+                <label htmlFor="element" className="form-label">Вибрати элемент героя</label>
                 <select 
                     required
                     className="form-select" 
@@ -105,7 +109,7 @@ const HeroesAddForm = () => {
                 </select>
             </div>
 
-            <button type="submit" className="btn btn-primary">Создать</button>
+            <button type="submit" className="btn btn-primary">Створити</button>
         </form>
     )
 }
