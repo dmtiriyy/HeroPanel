@@ -37,7 +37,18 @@ const filtersSlice = createSlice({
             .addDefaultCase(() => {})
     }
 });
-
+const buttons = buttonsData.map(({name, label})=>{
+    const active = props.filter === name;
+    const clazz = active ? 'btn-light' : "btn btn-outline-light"
+    return (
+        <button type="button"
+        className={`btn ${clazz}`}
+        key = {name}
+        onClick={() => props.onFilterSelect(name)}>
+        {label}
+</button>
+    )
+})
 const {actions, reducer} = filtersSlice;
 
 export default reducer;
