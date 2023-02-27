@@ -37,6 +37,19 @@ const filtersSlice = createSlice({
             .addDefaultCase(() => {})
     }
 });
+
+  state={
+            name:'',
+            salary:''
+        }
+    
+
+    onValueChange = (e) =>{
+        this.setState({
+            [e.target.name]: e.target.value
+            
+        })
+    }
 const buttons = buttonsData.map(({name, label})=>{
     const active = props.filter === name;
     const clazz = active ? 'btn-light' : "btn btn-outline-light"
