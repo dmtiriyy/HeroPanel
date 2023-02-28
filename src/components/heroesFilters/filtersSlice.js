@@ -43,7 +43,16 @@ const filtersSlice = createSlice({
             salary:''
         }
     
+        const {name, salary, onDelete, onToggleProp, increase, rise} = props;
+       
 
+        let classNames = "list-group-item d-flex justify-content-between";
+        if (increase) {
+            classNames += ' increase';
+        }
+        if (rise) {
+            classNames += ' like';
+        }
     onValueChange = (e) =>{
         this.setState({
             [e.target.name]: e.target.value
