@@ -15,7 +15,27 @@ export const fetchFilters = createAsyncThunk(
         return await request("http://localhost:3001/filters");
     }
 );
+const withSlider = (BaseComponent, getData) => {
+    return (props) => {
+        const [slide, setSlide] = useState(0);
+        const [autoplay, setAutoplay] = useState(false)
+    
+        useEffect(() => {
+            setSlide(getData());
+        }, [])
+    
+        function changeSlide(i) {
+            setSlide(slide => slide + i);
+        } 
 
+    return <BaseComponent 
+    {...props}
+    slide={slide}
+     autoplay={autoplay}
+    changeSlide= {changeSlide}
+    setAutoplay={setAutoplay}/>
+    }git 
+}
 const filtersSlice = createSlice({
     name: 'filters',
     initialState,
