@@ -34,8 +34,10 @@ const withSlider = (BaseComponent, getData) => {
      autoplay={autoplay}
     changeSlide= {changeSlide}
     setAutoplay={setAutoplay}/>
-    }git 
+    }
 }
+const getDataFromFirstFetch = () => {return 10};
+    const getDataFromSecondFetch = () => {return 20};
 const filtersSlice = createSlice({
     name: 'filters',
     initialState,
