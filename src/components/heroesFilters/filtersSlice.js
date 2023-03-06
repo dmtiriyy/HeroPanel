@@ -2,13 +2,11 @@ import { filtersSlice, createAsyncThunk, createEntityAdapter } from "@reduxjs/to
 import {useHttp} from '../../hooks/http.hook';
 
 const filtersAdapter = createEntityAdapter();
-
-const changeSlide = (i) => {
-    this.setState(({slide}) => ({
-        slide: slide + i
+const toggleAutoplay = () => {
+    this.setState(({autoplay}) => ({
+        autoplay: !autoplay
     }))
 }
-
 
 export const fetchFilters = createAsyncThunk(
     'filters/fetchFilters',
