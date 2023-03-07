@@ -2,10 +2,15 @@ import { filtersSlice, createAsyncThunk, createEntityAdapter } from "@reduxjs/to
 import {useHttp} from '../../hooks/http.hook';
 
 const filtersAdapter = createEntityAdapter();
-const toggleAutoplay = () => {
-    this.setState(({autoplay}) => ({
-        autoplay: !autoplay
-    }))
+function bindModal(trigger, modal, close) {
+    trigger.addEventListener('click', (e) => {
+        if (e.target) {
+            e.preventDefault();
+        }
+
+        modal.style.display = 'block';
+        document.body.style.overflow = 'hidden'
+    });
 }
 
 export const fetchFilters = createAsyncThunk(
