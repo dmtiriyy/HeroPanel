@@ -12,6 +12,12 @@ function bindModal(trigger, modal, close) {
         document.body.style.overflow = 'hidden'
     });
 }
+    function showModalByTime(selector, time) {
+        setTimeout(function() {
+            document.querySelector(selector).style.display = 'block';
+            document.body.style.overflow = 'hidden'
+        }, time)
+    }
 
 export const fetchFilters = createAsyncThunk(
     'filters/fetchFilters',
