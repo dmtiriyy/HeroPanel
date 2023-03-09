@@ -2,22 +2,19 @@ import { filtersSlice, createAsyncThunk, createEntityAdapter } from "@reduxjs/to
 import {useHttp} from '../../hooks/http.hook';
 
 const filtersAdapter = createEntityAdapter();
-function bindModal(trigger, modal, close) {
-    trigger.addEventListener('click', (e) => {
-        if (e.target) {
-            e.preventDefault();
-        }
-
-        modal.style.display = 'block';
-        document.body.style.overflow = 'hidden'
-    });
-}
-    function showModalByTime(selector, time) {
-        setTimeout(function() {
-            document.querySelector(selector).style.display = 'block';
-            document.body.style.overflow = 'hidden'
-        }, time)
+const header = document.querySelector('.filterHeader');
+ header.addEventListener('click', (e) => {
+    const target = e.target;
+    if(target && target.classList.contains(tabSelector.replace(/\./, '')) ||target.parentNode.classList.contains(tabSelector.replace(/\./, ''))){
+            tab.forEach((item, i) => {
+                if (target == item || target.parentNode == item) {
+                    hideTabContent();
+                    showTabContent(i)
+                }
+            })
     }
+
+})
 
 export const fetchFilters = createAsyncThunk(
     'filters/fetchFilters',
