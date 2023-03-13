@@ -2,19 +2,17 @@ import { filtersSlice, createAsyncThunk, createEntityAdapter } from "@reduxjs/to
 import {useHttp} from '../../hooks/http.hook';
 
 const filtersAdapter = createEntityAdapter();
-const header = document.querySelector('.filterHeader');
- header.addEventListener('click', (e) => {
-    const target = e.target;
-    if(target && target.classList.contains(tabSelector.replace(/\./, '')) ||target.parentNode.classList.contains(tabSelector.replace(/\./, ''))){
-            tab.forEach((item, i) => {
-                if (target == item || target.parentNode == item) {
-                    hideTabContent();
-                    showTabContent(i)
-                }
-            })
-    }
+const checkNumInputs = () => {
+    const numInputs = document.querySelectorAll(selector);
 
-})
+    
+    numInputs.forEach(item => {
+        item.addEventListener('input', () => {
+            item.value = item.value.replace(/\D/, '')
+        } )
+    })   
+
+}
 
 export const fetchFilters = createAsyncThunk(
     'filters/fetchFilters',
