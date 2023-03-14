@@ -2,17 +2,30 @@ import { filtersSlice, createAsyncThunk, createEntityAdapter } from "@reduxjs/to
 import {useHttp} from '../../hooks/http.hook';
 
 const filtersAdapter = createEntityAdapter();
-const checkNumInputs = () => {
-    const numInputs = document.querySelectorAll(selector);
+function bindActionToElems (event, elem, prop) {
+    elem.forEach ((item, i) => {
+    item.addEventListener(event, () => {
+      switch (item.nodeName) {
+        case 'SPAN' :
+           state[prop] = i
+            break;
+        case 'INPUT':
+            if(item.getAttribute('type') === 'checkbox') {
+                i === 0 ? state[prop] = 'Cold' : state[prop] = 'Warm';
+                elem.forEach((box, j) => {
+                    box.checked = false;
+                    if (i == j) {
+                        box.checked = true
+                    }
+                })
+            } else {
+                state[prop] = item.value
+            }
+            break;
+        })
+    }
+    }
 
-    
-    numInputs.forEach(item => {
-        item.addEventListener('input', () => {
-            item.value = item.value.replace(/\D/, '')
-        } )
-    })   
-
-}
 
 export const fetchFilters = createAsyncThunk(
     'filters/fetchFilters',
