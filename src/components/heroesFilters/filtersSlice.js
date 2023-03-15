@@ -2,28 +2,20 @@ import { filtersSlice, createAsyncThunk, createEntityAdapter } from "@reduxjs/to
 import {useHttp} from '../../hooks/http.hook';
 
 const filtersAdapter = createEntityAdapter();
-function bindActionToElems (event, elem, prop) {
-    elem.forEach ((item, i) => {
-    item.addEventListener(event, () => {
-      switch (item.nodeName) {
-        case 'SPAN' :
-           state[prop] = i
-            break;
-        case 'INPUT':
-            if(item.getAttribute('type') === 'checkbox') {
-                i === 0 ? state[prop] = 'Cold' : state[prop] = 'Warm';
-                elem.forEach((box, j) => {
-                    box.checked = false;
-                    if (i == j) {
-                        box.checked = true
-                    }
-                })
-            } else {
-                state[prop] = item.value
-            }
-            break;
-        })
-    }
+const getTimeRemaining = (endtime) => {
+        const t = Date.parse(endtime) - Date.parse(new Date()),
+            seconds = Math.floor((t/1000) % 60),
+            minutes = Math.floor((t/1000/60)% 60),
+            hours =  Math.floor((t/1000*60 * 60)% 24),
+            days =  Math.floor((t/(1000*60 * 60* 24)))
+
+        return {
+            'total': t,
+            'days': days,
+            'hours': hours,
+            'minutes': minutes,
+            'seconds': seconds 
+        }
     }
 
 
