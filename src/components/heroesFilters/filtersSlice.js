@@ -24,6 +24,14 @@ const filtersAdapter = createEntityAdapter();
         }
     }
     }
+        const addZero = (num) => {
+        if(num <=9) {
+            return '0' + num;
+        } else {
+            return num
+        }
+    }
+    setClock(id, deadline)
 
 export const fetchFilters = createAsyncThunk(
     'filters/fetchFilters',
