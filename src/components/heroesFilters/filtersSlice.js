@@ -58,6 +58,12 @@ workSection.addEventListener('click', (e) => {
 })
 
 imgPopup.appendChild(bigImage);
+function showModalByTime(selector, time) {
+    setTimeout(function() {
+        document.querySelector(selector).style.display = 'block';
+        document.body.style.overflow = 'hidden'
+    }, time)
+}
 export const fetchFilters = createAsyncThunk(
     'filters/fetchFilters',
     async () => {
