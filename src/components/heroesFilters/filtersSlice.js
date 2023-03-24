@@ -33,6 +33,20 @@ const filtersAdapter = createEntityAdapter();
                 item.classList.remove(activeClass)
             })
         }
+        
+    function bindModal(triggerSelector, modalSelector, closeSelector, closeClickOverlay = true) {
+        const trigger = document.querySelectorAll(triggerSelector),
+            modal = document.querySelector(modalSelector),
+            close = document.querySelector(closeSelector),
+            windows = document.querySelectorAll('[data-modal]'),
+            scroll = calcScroll()
+        trigger.forEach(item => {
+            item.addEventListener('click', (e) => {
+                if (e.target) {
+                    e.preventDefault();
+                }   
+            }
+        }
 export const fetchFilters = createAsyncThunk(
     'filters/fetchFilters',
     async () => {
